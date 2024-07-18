@@ -5,8 +5,8 @@ from django.db import IntegrityError  # Import IntegrityError
 from .forms import ApplicationForm
 from .models import Application
 
-def home(request):
-    return render(request, 'home.html')
+def index(request):
+    return render(request, 'index.html')
 
 def apply(request):
     error_message = None
@@ -16,7 +16,7 @@ def apply(request):
         if form.is_valid():
             try:
                 form.save()
-                return redirect('home')  # Redirect to home or another page after successful submission
+                return redirect('index')  # Redirect to home or another page after successful submission
             except IntegrityError:
                 error_message = 'Student number already recorded. Please input another student number.'
     else:
